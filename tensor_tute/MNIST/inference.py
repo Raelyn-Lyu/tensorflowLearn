@@ -23,8 +23,8 @@ def inference(input_tensor,regularizer):
         weights = get_weight_variable([IPT_NODES,LAYER1_NODES],regularizer)
         bias = tf.get_variable("bias",[LAYER1_NODES],initializer=tf.constant_initializer(0.0))
         layer1 = tf.nn.relu(tf.matmul(input_tensor,weights)+bias)
-    with tf.vaiable_scope(layer2):
+    with tf.vaiable_scope('layer2'):
         weights = get_weight_variable([LAYER1_NODES,OPT_NODES],regularizer)
         bias = tf.get_variable("bias",[OPT_NODES],initializer=tf.constant_initializer(0.0))
-        layers2 = tf.nn.relu(tf.matmul(layer1,weights)+bias)
+        layer2 = tf.nn.relu(tf.matmul(layer1,weights)+bias)
     return layer2
